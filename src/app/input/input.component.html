@@ -1,0 +1,24 @@
+<form [formGroup]="tipForm" (ngSubmit)="onSubmit()">
+ <label for="cost">Cost of Service:</label>
+ <input id="cost" formControlName="cost" type="number" required>
+ <div *ngIf="tipForm.controls['cost'].invalid && tipForm.controls['cost'].touched">
+    Cost is required and must be a number.
+ </div>
+
+ <label>Service Quality:</label>
+ <label>
+    <input type="radio" formControlName="quality" value="0.15"> Okay (15%)
+ </label>
+ <label>
+    <input type="radio" formControlName="quality" value="0.18"> Good (18%)
+ </label>
+ <label>
+    <input type="radio" formControlName="quality" value="0.20"> Excellent (20%)
+ </label>
+
+ <label>
+    <input type="checkbox" formControlName="roundUp"> Round up tip
+ </label>
+
+ <button type="submit" [disabled]="tipForm.invalid">Calculate Tip</button>
+ </form>
